@@ -1,0 +1,19 @@
+.navbar{
+    background-color: rgb(38, 217, 223);
+    display: flex;
+    justify-content: space-around;
+    height: 10vh;
+    align-items: center;
+  }
+  
+  .footer{
+    background-color: rgb(116, 116, 204);
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .main_content{
+    height: 80vh;
+  }
+  
