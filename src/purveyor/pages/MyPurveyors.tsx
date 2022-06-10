@@ -1,17 +1,26 @@
-import * as React from "react";
-import { purveyorType } from "../slice/PurveyorSlice";
+import React, {useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { stateTypeRedux } from "../../store/store";
+import { getAllPurveyors } from "../actions/PurveyorActions";
+import Purveyor from "../components/Purveyor";
+import PurveyorList from "../components/PurveyorList";
+import { getAllPurveyorsReducer, purveyorType } from "../slice/purveyorSlice";
 
-type purveyorProps = {
-  purveyor: purveyorType;
-};
 
-const MyPurveyors: React.FC<purveyorProps> = ({ purveyor }) => {
+
+const MyPurveyors = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getAllPurveyors().then(purveyors => {
+
+      dispatch(getAllPurveyorsReducer(purveyors))
+    })
+  }, [])
+
   return (
-    <div>
-      <h3> {purveyor.purveyorName}</h3>
-      <h3> {purveyor.purveyorIdentification}</h3>
-      <h3> {purveyor.purveyorEmail}</h3>
-    </div>
+    <PurveyorList/>
   );
 };
 

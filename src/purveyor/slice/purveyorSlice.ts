@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import * as React from 'react';
 
 type purveyorType = {
-    purveyorId: string,
+    purveyorId?: string,
     purveyorName: string,
     purveyorIdentification: string,
     purveyorEmail: string
@@ -11,11 +10,11 @@ type purveyorType = {
 const initialState = {
     purveyors: [
         {
-            purveyorId: "1",
-            purveyorName: "David",
-            purveyorIdentification: "123",
-            purveyorEmail: "david@hotmail.com"
-        }
+            purveyorId: "",
+            purveyorName: "",
+            purveyorIdentification: "",
+            purveyorEmail: ""
+        },
     ]
 }
 
@@ -25,16 +24,19 @@ const purveyorSlice = createSlice (
     initialState,
     reducers: 
         {
-            getPurveyorReducer(state, action){
+            addPurveyorReducer(state, action){
                 const newPurveyors = [...state.purveyors, action.payload]
                 const newState = {...state, purveyors: newPurveyors}
                 return newState
+            },
+            getAllPurveyorsReducer(state, action){
+                return {...state, purveyors: action.payload}
             }
         }
     }
 );
 export default purveyorSlice.reducer;
 
-export const {getPurveyorReducer} = purveyorSlice.actions;  
+export const {addPurveyorReducer, getAllPurveyorsReducer} = purveyorSlice.actions;  
 
 export type {purveyorType}

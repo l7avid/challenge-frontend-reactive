@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import purveyorSlice from "../purveyor/slice/PurveyorSlice";
+import purveyorSlice from "../purveyor/slice/purveyorSlice";
 
 const store = configureStore({
     reducer: {
@@ -7,8 +7,8 @@ const store = configureStore({
     }
 })
 
-type stateType = ReturnType<typeof store.getState>
+type stateTypeRedux = ReturnType<typeof store.getState>
 
 export default store
 
-export type { stateType }
+export type { stateTypeRedux }
