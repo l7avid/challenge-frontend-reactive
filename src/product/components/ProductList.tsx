@@ -6,7 +6,7 @@ import Product from './Product';
 
 const ProductList = () => {
 
-    const purveyors = useSelector((state: stateTypeRedux) => state.purveyor.purveyors)
+    const purveyors = useSelector((state: stateTypeRedux) => state.product.products)
     
 
   return (

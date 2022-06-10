@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react';
 import { useDispatch } from 'react-redux';
+import { getAllProducts } from '../actions/ProductActions';
 import ProductList from '../components/ProductList';
+import { getAllProductsReducer } from '../slice/productSlice';
 
 interface IMyProductsProps {
 }

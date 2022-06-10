@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
+import { saveProduct } from '../actions/ProductActions';
+import { addProductReducer } from '../slice/productSlice';
 
 const NewProduct = () => {
 
@@ -7,15 +9,15 @@ const NewProduct = () => {
 
   const [productName, setProductName] = useState('');
   const [productDescription, setProductDescription] = useState('');
-  const [minAmount, setMinAmount] = useState('');
-  const [maxAmount, setMaxAmount] = useState('');
-  const [availableUnits, setAvailable] = useState('');
-  const [productPrice, setProductPrice] = useState('');
+  const [minAmount, setMinAmount] = useState<number>();
+  const [maxAmount, setMaxAmount] = useState<number>();
+  const [availableUnits, setAvailable] = useState<number>(0);
+  const [productPrice, setProductPrice] = useState<number>();
   const [purveyorName, setPurveyorName] = useState('');
 
   const addProduct = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
-    if (productName && productDescription && minAmount && maxAmount && availableUnits && productPrice && purveyorName) {
+    if (productName && productDescription && minAmount && maxAmount && productPrice && purveyorName) {
       console.log("Enviando")
       const productToAdd = {
         productName,
@@ -33,10 +35,11 @@ const NewProduct = () => {
 
       setProductName('');
       setProductDescription('');
-      setMinAmount('');
-      setMaxAmount('');
-      setAvailable('');
-      setProductPrice('');
+      setMinAmount(0);
+      setMaxAmount(0);
+      setAvailable(0);
+      setProductPrice(0);
+      setPurveyorName('')
 
     }
   };
@@ -60,23 +63,23 @@ const NewProduct = () => {
         />
         <input
           style={{marginTop: "1vh", marginRight: "1vh"}}
-          type="text"
+          type="number"
           placeholder="Min"
-          onChange={(event) => setMinAmount(event.target.value)}
+          onChange={(event) => setMinAmount(event.target.valueAsNumber)}
           value={minAmount}
         />
          <input
           style={{marginTop: "1vh", marginRight: "1vh"}}
-          type="text"
+          type="number"
           placeholder="Max"
-          onChange={(event) => setMaxAmount(event.target.value)}
+          onChange={(event) => setMaxAmount(event.target.valueAsNumber)}
           value={maxAmount}
         />
          <input
           style={{marginTop: "1vh", marginRight: "1vh"}}
-          type="text"
+          type="number"
           placeholder="Price"
-          onChange={(event) => setProductPrice(event.target.value)}
+          onChange={(event) => setProductPrice(event.target.valueAsNumber)}
           value={productPrice}
         />
          <input
