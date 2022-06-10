@@ -8,7 +8,7 @@ interface IPurveyorProps {
 const Purveyor: React.FunctionComponent<IPurveyorProps> = ({purveyor}) => {
   return (
       <div>
-          <h3>Nombre: {purveyor.purveyorName}  identificacion: {purveyor.purveyorIdentification} email: {purveyor.purveyorEmail}</h3>
+          <h3>Name: {purveyor.purveyorName}  identification: {purveyor.purveyorIdentification} email: {purveyor.purveyorEmail}</h3>
       </div>
   )
 };
