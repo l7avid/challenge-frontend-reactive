@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-interface IPurveyorProps {
+interface IProductProps {
     product: productType
 }
 
-const Purveyor: React.FunctionComponent<IPurveyorProps> = ({product}) => {
+const Product: React.FunctionComponent<IProductProps> = ({product}) => {
   return (
       <div>
         <h5>-------------------------------------------------------------------</h5>
@@ -19,4 +19,4 @@ const Purveyor: React.FunctionComponent<IPurveyorProps> = ({product}) => {
   )
 };
 
-export default Purveyor;
+export default Product;
