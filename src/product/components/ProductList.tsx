@@ -1,13 +1,14 @@
-import * as React from 'react';
-import { useSelector } from 'react-redux';
+import React, {useEffect, useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { stateTypeRedux } from '../../store/store';
+import { getAllProducts } from '../actions/ProductActions';
+import { getAllProductsReducer } from '../slice/productSlice';
 import Product from './Product';
 
 
 const ProductList = () => {
 
     const purveyors = useSelector((state: stateTypeRedux) => state.product.products)
-    
 
   return (
   <div>

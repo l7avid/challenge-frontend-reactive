@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import * as React from 'react';
 
 type productType = {
@@ -41,13 +41,15 @@ const productSlice = createSlice({
         getAllProductsReducer(state, action){
             return {...state, products: action.payload}
         },
-        deleteProductReducer(state, action){
-            const newProducts = [...state.products, action.payload]
-            const newState = {...state, products: newProducts}
+        deleteProductReducer(state, action:PayloadAction<string>){
+            const newList = [...state.products.filter(product => product.productId != action.payload)]
+            const newState = {...state, products: newList}
+    
             return newState
+            }
         }
     }      
-})
+)
 
 export default productSlice.reducer;
 
