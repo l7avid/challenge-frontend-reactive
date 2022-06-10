@@ -4,7 +4,7 @@ import { stateTypeRedux } from '../../store/store';
 import Product from './Product';
 
 
-const PurveyorList = () => {
+const ProductList = () => {
 
     const purveyors = useSelector((state: stateTypeRedux) => state.purveyor.purveyors)
     
@@ -15,4 +15,4 @@ const PurveyorList = () => {
   </div>
 )};
 
-export default PurveyorList;
+export default ProductList;

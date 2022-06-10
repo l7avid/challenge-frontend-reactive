@@ -11,6 +11,7 @@ import { getAllPurveyorsReducer, purveyorType } from "../slice/purveyorSlice";
 const MyPurveyors = () => {
 
   const dispatch = useDispatch();
+  
 
   useEffect(() => {
     getAllPurveyors().then(purveyors => {
