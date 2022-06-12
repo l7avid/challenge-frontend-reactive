@@ -41,6 +41,7 @@ const NewReceipt = () => {
         <input
           style={{marginTop: "1vh", marginRight: "1vh"}}
           type="number"
+          min='0'
           placeholder="Units"
           onChange={(event) => setProductUnits(event.target.valueAsNumber)}
           value={productUnits}

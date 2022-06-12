@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { stateTypeRedux } from '../../store/store';
+import { saveBill } from '../actions/BillActions';
+import BillProduct from '../components/BillProduct';
+import { addBillReducer } from '../slice/billSlice';
 
 const NewBill = () => {
 
@@ -11,25 +14,26 @@ const NewBill = () => {
   const [clientName, setClientName] = useState('');
   const [sellerName, setSellerName] = useState('');
 
-  const createReceipt = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const createBill = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
 
-    const billProducts = new Map(billState.map(billProduct => {
-        return [billProduct.productName, billProduct.productUnits]
-    }));
+    const billProducts = billState.flatMap(billProduct => billProduct.productsId);
 
-    const billProductsObject = Object.fromEntries(billProducts)
+    // const billProductsObject = Object.fromEntries(billProducts)
 
-    const totalToPay = billState.reduce((add, product) => product.productPrice + add, 0)
+    const totalToPay = billState.reduce((add, bill) => bill.totalToPay + add, 0)
 
-    if (clientName && sellerName && billProductsObject && totalToPay) {
+    console.log(totalToPay);
+    
+
+    if (clientName && sellerName && billProducts && totalToPay) {
       console.log("Enviando")
       const newBill = {
         date: (new Date).toString(),
         clientName,
         sellerName,
         totalToPay,
-        billProductsObject
+        productsId: billProducts
       };
 
       const bill = await saveBill(newBill);
@@ -58,9 +62,9 @@ const NewBill = () => {
           onChange={(event) => setSellerName(event.target.value)}
           value={sellerName}
         />
-        <h5>{productState.map(product => <ProductItemBill product={product} key={product.productId}/>)}</h5>
+        <h5>{productState.map(product => <BillProduct product={product} key={product.productId}/>)}</h5>
         </form>
-      <button style={{marginTop: "1vh", marginBottom: "1vh"}} onClick={(event) => createReceipt(event)}>Generate</button>
+      <button style={{marginTop: "1vh", marginBottom: "1vh"}} onClick={(event) => createBill(event)}>Generate</button>
     </div>
   )
 };
