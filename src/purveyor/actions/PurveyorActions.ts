@@ -7,13 +7,13 @@ const HEADERS = {
 }
 
 export const savePurveyor = async(purveyor: purveyorType) => {
-    const response = await fetch(`http://localhost:8080/create/purveyor`, {method: 'POST', body: JSON.stringify(purveyor), headers: HEADERS})
+    const response = await fetch(`https://backend-challenge-reactive.herokuapp.com/create/purveyor`, {method: 'POST', body: JSON.stringify(purveyor), headers: HEADERS})
     const data = await response.json() as purveyorType
     return data
 }
 
 export const getAllPurveyors = async() => {
-    const response = await fetch(`http://localhost:8080/get/purveyors`)
+    const response = await fetch(`https://backend-challenge-reactive.herokuapp.com/get/purveyors`)
     const data = await response.json() as purveyorType
     return data
 }

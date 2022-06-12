@@ -6,18 +6,18 @@ const HEADERS = {
 }
 
 export const saveProduct = async(product: productType) => {
-    const response = await fetch(`http://localhost:8080/create/product`, {method: 'POST', body: JSON.stringify(product), headers: HEADERS})
+    const response = await fetch(`https://backend-challenge-reactive.herokuapp.com/create/product`, {method: 'POST', body: JSON.stringify(product), headers: HEADERS})
     const data = await response.json() as productType
     return data
 }
 
 export const getAllProducts = async() => {
-    const response = await fetch(`http://localhost:8080/get/products`)
+    const response = await fetch(`https://backend-challenge-reactive.herokuapp.com/get/products`)
     const data = await response.json() as productType
     return data
 }
 
 export const deleteProduct = async(id: string) => {
-    const response = await fetch(`http://localhost:8080/delete/product/${id}`, { method: 'DELETE', headers: HEADERS})
+    const response = await fetch(`https://backend-challenge-reactive.herokuapp.com/delete/product/${id}`, { method: 'DELETE', headers: HEADERS})
     return {productDeleted: response.ok, productId: id}
 }
