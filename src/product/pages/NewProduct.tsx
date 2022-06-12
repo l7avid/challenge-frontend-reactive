@@ -13,11 +13,11 @@ const NewProduct = () => {
   const [maxAmount, setMaxAmount] = useState<number>();
   const [availableUnits, setAvailable] = useState<number>(0);
   const [productPrice, setProductPrice] = useState<number>();
-  const [purveyorName, setPurveyorName] = useState('');
+  const [purveyorId, setPurveyorId] = useState('');
 
   const addProduct = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
-    if (productName && productDescription && minAmount && maxAmount && productPrice && purveyorName) {
+    if (productName && productDescription && minAmount && maxAmount && productPrice && purveyorId) {
       console.log("Enviando")
       const productToAdd = {
         productName,
@@ -26,7 +26,7 @@ const NewProduct = () => {
         maxAmount,
         availableUnits,
         productPrice,
-        purveyorName
+        purveyorId
       };
 
       const product = await saveProduct(productToAdd);
@@ -39,7 +39,7 @@ const NewProduct = () => {
       setMaxAmount(0);
       setAvailable(0);
       setProductPrice(0);
-      setPurveyorName('')
+      setPurveyorId('')
 
     }
   };
@@ -86,8 +86,8 @@ const NewProduct = () => {
           style={{marginTop: "1vh", marginRight: "1vh"}}
           type="text"
           placeholder="Purveyor"
-          onChange={(event) => setPurveyorName(event.target.value)}
-          value={purveyorName}
+          onChange={(event) => setPurveyorId(event.target.value)}
+          value={purveyorId}
         />
       </form>
       <button style={{marginTop: "1vh", marginBottom: "1vh"}} onClick={(event) => addProduct(event)}>Add Product</button>

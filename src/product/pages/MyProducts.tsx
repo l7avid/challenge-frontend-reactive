@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react';
 import { useDispatch } from 'react-redux';
+import { getAllPurveyors } from '../../purveyor/actions/PurveyorActions';
+import { getAllPurveyorsReducer } from '../../purveyor/slice/purveyorSlice';
 import { getAllProducts } from '../actions/ProductActions';
 import ProductList from '../components/ProductList';
 import { getAllProductsReducer } from '../slice/productSlice';
-
-interface IMyProductsProps {
-}
 
 const MyProducts = () => {
 
@@ -16,6 +15,9 @@ const MyProducts = () => {
     getAllProducts().then(products => {
 
       dispatch(getAllProductsReducer(products))
+    })
+    getAllPurveyors().then(purveyors => {
+      dispatch(getAllPurveyorsReducer(purveyors))
     })
   }, [])
 

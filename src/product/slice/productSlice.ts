@@ -9,7 +9,7 @@ type productType = {
     maxAmount: number,
     availableUnits: number,
     productPrice: number,
-    purveyorName: string
+    purveyorId: string
 }
 
 const initialState = {
@@ -22,7 +22,7 @@ const initialState = {
         maxAmount: 0,
         availableUnits: 0,
         productPrice: 0,
-        purveyorName: ""
+        purveyorId: ""
         }
     ]
 }

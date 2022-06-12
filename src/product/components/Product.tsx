@@ -11,7 +11,7 @@ const Product: React.FunctionComponent<IProductProps> = ({product}) => {
 
   const dispatch = useDispatch();
 
-const deleteSingleProduct = async (event: React.FormEvent<HTMLButtonElement>) => {
+  const deleteSingleProduct = async (event: React.FormEvent<HTMLButtonElement>) => {
 
   event.preventDefault();
   const deleteState = await deleteProduct(`${product.productId}`);
@@ -19,7 +19,6 @@ const deleteSingleProduct = async (event: React.FormEvent<HTMLButtonElement>) =>
   if(deleteState.productDeleted){
     dispatch(deleteProductReducer(deleteState.productId))
   }
-  // dispatch(deleteProductReducer(deleteOneProduct))
 }
 
   return (
@@ -31,7 +30,7 @@ const deleteSingleProduct = async (event: React.FormEvent<HTMLButtonElement>) =>
         <h5 className='h5'>Max. Amount: {product.maxAmount} </h5>
         <h5 className='h5'>Available units: {product.availableUnits} </h5>
         <h5 className='h5'>Price: {product.productPrice}</h5> 
-        <h5 >Purveyor Name: {product.purveyorName}</h5>
+        <h5 >Purveyor Id: {product.purveyorId}</h5>
         <button onClick={(event) => deleteSingleProduct(event)} style={{marginBottom: "1vh"}}>Delete</button>
       </div>
   )

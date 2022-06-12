@@ -8,11 +8,11 @@ import Product from './Product';
 
 const ProductList = () => {
 
-    const purveyors = useSelector((state: stateTypeRedux) => state.product.products)
+    const products = useSelector((state: stateTypeRedux) => state.product.products)
 
   return (
   <div>
-    {purveyors.map((product) => <Product key={product.productId} product={product} />)}
+    {products.map((product) => <Product key={product.productId} product={product} />)}
   </div>
 )};
 
