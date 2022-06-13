@@ -1,10 +1,25 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { updateProductReducer } from '../../product/slice/productSlice';
 import { stateTypeRedux } from '../../store/store';
 import { saveReceipt } from '../actions/receiptActions';
 import { addReceiptReducer } from '../slice/receiptSlice';
 
 const NewReceipt = () => {
+
+  const {user} = useSelector((state:stateTypeRedux) => state.logged)
+
+  console.log(user);
+  
+  const navigate = useNavigate();
+
+  useEffect(()=> {
+    if(user=== null){
+      navigate('/logInGoogle')
+    }
+  }, [])
+
 
   const dispatch = useDispatch();
   const productState = useSelector((state: stateTypeRedux) => state.product.products)
@@ -17,6 +32,9 @@ const NewReceipt = () => {
     if (productId && productUnits) {
       console.log("Enviando")
       const product = productState.filter(product => product.productId === productId)[0];
+
+      const newProduct = {...product, availableUnits: product.availableUnits + productUnits}
+
       const newReceipt = {
         purveyorId: product.purveyorId,
         productUnits: productUnits,
@@ -26,7 +44,10 @@ const NewReceipt = () => {
 
       const receipt = await saveReceipt(newReceipt);
 
+      // const productUpdated = await updateProduct(newProduct);
+
       dispatch(addReceiptReducer(receipt));
+      // dispatch(updateProductReducer(productUpdated))
 
       setProductId('')
       setProductUnits(0)

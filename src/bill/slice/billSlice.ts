@@ -10,6 +10,12 @@ type billType = {
     productsId: string[]
 }
 
+type newProductType = {
+    productName: string,
+    units: number,
+    price: number
+}
+
 const initialState = {
     bills: [
         {
@@ -61,3 +67,5 @@ export default billSlice.reducer;
 export const {addBillReducer, getAllBillsReducer} = billSlice.actions;
 
 export type {billType}
+
+export type {newProductType}

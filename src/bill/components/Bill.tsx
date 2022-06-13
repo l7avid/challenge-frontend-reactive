@@ -19,13 +19,12 @@ const Bill: React.FunctionComponent<IBillProps> = ({bill}) => {
       dispatch(getAllProductsReducer(products))
     })
   }, [])
-
-  const purveyorState = useSelector((state: stateTypeRedux) => state.purveyor.purveyors)
   
   const productState = useSelector((state: stateTypeRedux) => state.product.products)
 
   const productIds = [] as string[]
-  productState.map(product => productIds.push(product.productId));
+
+  // productState.map(product => productIds.push(product.productId));
 
   return (
       <div>

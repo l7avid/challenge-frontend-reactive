@@ -4,13 +4,15 @@ import billSlice from "../bill/slice/billSlice";
 import productSlice from "../product/slice/productSlice";
 import purveyorSlice from "../purveyor/slice/purveyorSlice";
 import receiptSlice from "../receipt/slice/receiptSlice";
+import loggedInReducer from "../login/slice/loginSlice"
 
 const store = configureStore({
     reducer: {
         purveyor: purveyorSlice,
         product: productSlice,
         receipt: receiptSlice,
-        bill: billSlice
+        bill: billSlice,
+        logged: loggedInReducer
     }
 })
 

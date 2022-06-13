@@ -6,7 +6,7 @@ function App() {
   return (
     <BrowserRouter>
       <PrivateRoutes />
-      <footer className="footer">This is my footer</footer>
+      <footer className="footer">Developed by David Reina</footer>
     </BrowserRouter>
   );
 }

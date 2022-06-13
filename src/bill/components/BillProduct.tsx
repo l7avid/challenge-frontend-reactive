@@ -4,23 +4,36 @@ import { saveProduct } from '../../product/actions/ProductActions';
 import ProductList from '../../product/components/ProductList';
 import { productType } from '../../product/slice/productSlice';
 import { stateTypeRedux, storeDispatch } from '../../store/store';
+import { newProductType } from '../slice/billSlice';
 
 
 
 interface IBillProductProps {
     product: productType
+    addBillProductToList: React.Dispatch<React.SetStateAction<newProductType[]>> 
 }
 
-const BillProduct: React.FunctionComponent<IBillProductProps> = ({product}) => {    
+const BillProduct: React.FunctionComponent<IBillProductProps> = ({product, addBillProductToList}) => {
 
     const updateUnits = (event :React.ChangeEvent<HTMLInputElement>) => {
       event.preventDefault()
+
         const productPrice = product.productPrice * Number(event.target.value)
-        const billProduct = {
+          const billProduct: newProductType = {
           productName: product.productName,
           units: Number(event.target.value),
           price:productPrice
         }
+
+        addBillProductToList((prev) => {
+          const found = prev.find(product => product.productName === billProduct.productName)
+          if(found){
+            return prev.map(product => product.productName === billProduct.productName? billProduct:product)
+          }
+          console.log([...prev, billProduct]);
+          
+          return [...prev, billProduct]
+        })
 
         console.log(billProduct);
         

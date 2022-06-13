@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
+import { newProductType } from '../../bill/slice/billSlice';
 import { deleteProduct } from '../actions/ProductActions';
 import { deleteProductReducer, productType } from '../slice/productSlice';
 

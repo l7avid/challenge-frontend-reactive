@@ -12,7 +12,11 @@ type productType = {
     purveyorId: string
 }
 
-const initialState = {
+interface IInitialState{
+    products: productType[]
+}
+
+const initialState: IInitialState = {
     products: [
         {
         productId: "",
@@ -46,14 +50,18 @@ const productSlice = createSlice({
             const newState = {...state, products: newList}
     
             return newState
-            }
+        },
+        updateProductReducer(state, action: PayloadAction<productType>){
+            state.products = state.products
+            .map(product => product.productId === action.payload.productId?action.payload:product)
+        }
         }
     }      
 )
 
 export default productSlice.reducer;
 
-export const {addProductReducer, getAllProductsReducer, deleteProductReducer} = productSlice.actions;
+export const {addProductReducer, getAllProductsReducer, deleteProductReducer, updateProductReducer} = productSlice.actions;
 
 export type {productType}
 

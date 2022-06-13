@@ -1,12 +1,27 @@
 import * as React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { stateTypeRedux } from "../../store/store";
 import { savePurveyor } from "../actions/PurveyorActions";
 import { addPurveyorReducer } from "../slice/purveyorSlice";
 
 
 
 const NewPurveyor = () => {
+
+  const {user} = useSelector((state:stateTypeRedux) => state.logged)
+
+  console.log(user);
+  
+  const navigate = useNavigate();
+
+  React.useEffect(()=> {
+    if(user=== null){
+      navigate('/logInGoogle')
+    }
+  }, [])
+
 
   const dispatch = useDispatch();
 

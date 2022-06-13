@@ -1,11 +1,25 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { stateTypeRedux } from '../../store/store';
 import { saveBill } from '../actions/BillActions';
 import BillProduct from '../components/BillProduct';
-import { addBillReducer } from '../slice/billSlice';
+import { addBillReducer, newProductType } from '../slice/billSlice';
 
 const NewBill = () => {
+
+  const {user} = useSelector((state:stateTypeRedux) => state.logged)
+
+  console.log(user);
+  
+  const navigate = useNavigate();
+
+  useEffect(()=> {
+    if(user === null){
+      navigate('/logInGoogle')
+    }
+  }, [])
+
 
   const dispatch = useDispatch();
   const productState = useSelector((state: stateTypeRedux) => state.product.products)
@@ -13,6 +27,7 @@ const NewBill = () => {
 
   const [clientName, setClientName] = useState('');
   const [sellerName, setSellerName] = useState('');
+  const [billProductsList, setBillProductList] = useState<newProductType[]>([]) 
 
   const createBill = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
@@ -45,6 +60,8 @@ const NewBill = () => {
     }
   };
 
+  
+
   return (
     <div>
       <form>
@@ -62,7 +79,7 @@ const NewBill = () => {
           onChange={(event) => setSellerName(event.target.value)}
           value={sellerName}
         />
-        <h5>{productState.map(product => <BillProduct product={product} key={product.productId}/>)}</h5>
+        <h5>{productState.map(product => <BillProduct addBillProductToList={setBillProductList} product={product} key={product.productId}/>)}</h5>
         </form>
       <button style={{marginTop: "1vh", marginBottom: "1vh"}} onClick={(event) => createBill(event)}>Generate</button>
     </div>
