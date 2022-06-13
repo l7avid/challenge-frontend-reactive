@@ -17,9 +17,9 @@ const MyBills = () => {
   
   useEffect(() => {
     if(user === null){
-      navigate('/logInGoogle')
+      navigate('/logIn')
     }
-    
+
     getAllBills().then(bills => {
       
       dispatch(getAllBillsReducer(bills))

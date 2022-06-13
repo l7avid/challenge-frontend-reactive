@@ -16,7 +16,7 @@ const NewBill = () => {
 
   useEffect(()=> {
     if(user === null){
-      navigate('/logInGoogle')
+      navigate('/logIn')
     }
   }, [])
 

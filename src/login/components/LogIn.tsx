@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { stateTypeRedux } from "../../store/store";
 import { auth } from "../firebaseConfig";
+import GitHubLogin from "../GitHubLogin";
+import GoogleLogin from "../GoogleLogin";
 
 
 
@@ -67,6 +69,8 @@ const LogIn: React.FunctionComponent = () => {
         /><br />
         <button style={{marginBottom: "1vh", marginTop: "1vh"}} onClick={(e) => logInForm(e)}>Log In</button><br />
       </form>
+      <GitHubLogin/>
+      <GoogleLogin/>
     </div>
   ) ;
 };

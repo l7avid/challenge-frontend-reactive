@@ -23,7 +23,7 @@ const MyProducts = () => {
     
   useEffect(() => {
     if(user=== null){
-      navigate('/logInGoogle')
+      navigate('/logIn')
     }
 
     getAllProducts().then(products => {

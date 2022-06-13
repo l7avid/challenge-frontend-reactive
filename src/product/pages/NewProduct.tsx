@@ -15,7 +15,7 @@ const NewProduct = () => {
 
   useEffect(()=> {
     if(user=== null){
-      navigate('/logInGoogle')
+      navigate('/logIn')
     }
   }, [])
 

@@ -18,7 +18,7 @@ const NewPurveyor = () => {
 
   React.useEffect(()=> {
     if(user=== null){
-      navigate('/logInGoogle')
+      navigate('/logIn')
     }
   }, [])
 

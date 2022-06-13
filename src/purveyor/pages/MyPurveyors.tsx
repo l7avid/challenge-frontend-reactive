@@ -22,7 +22,7 @@ const MyPurveyors = () => {
     getAllPurveyors().then(purveyors => {
 
       if(user=== null){
-        navigate('/logInGoogle')
+        navigate('/logIn')
       }
       dispatch(getAllPurveyorsReducer(purveyors))
     })
