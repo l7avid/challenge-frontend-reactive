@@ -8,7 +8,7 @@ import { auth } from "../firebaseConfig";
 
 
 const LogIn: React.FunctionComponent = () => {
-
+  
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
 

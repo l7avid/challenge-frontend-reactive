@@ -18,16 +18,14 @@ const MyProducts = () => {
   
   const navigate = useNavigate();
 
-  useEffect(()=> {
+  const dispatch = useDispatch();
+
+    
+  useEffect(() => {
     if(user=== null){
       navigate('/logInGoogle')
     }
-  }, [])
 
-    const dispatch = useDispatch();
-
-    
-    useEffect(() => {
     getAllProducts().then(products => {
 
       dispatch(getAllProductsReducer(products))

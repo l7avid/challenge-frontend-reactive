@@ -14,8 +14,8 @@ import { stateTypeRedux } from "../store/store";
 
 import SignIn from "../login/components/SingIn";
 import LogIn from "../login/components/LogIn";
-import Welcome from "../login/components/Welcome";
 import GoogleLogin from "../login/GoogleLogin"
+import LogOut from "../login/components/LogOut";
 
 interface PrivateRoutesProps {}
 
@@ -36,12 +36,12 @@ const PrivateRoutes: React.FunctionComponent<PrivateRoutesProps> = () => {
       <Link to="/my_receipts">My Receipts</Link>
       <Link to="/bill">Bill</Link>
       <Link to="/my_bills">My Bills</Link>
+      <Link to="/logout">Log out</Link>
       </nav>:
        <nav className="navbar">
        <Link to="/logInGoogle">Log in with google</Link>
        <Link to="/logIn">Log in</Link>
        <Link to="/SignIn">Sign in</Link>
-       <Link to="/welcome">Welcome</Link>
      </nav>
     }
      
@@ -57,7 +57,7 @@ const PrivateRoutes: React.FunctionComponent<PrivateRoutesProps> = () => {
         <Route path="/logInGoogle" element={<GoogleLogin />}/>
         <Route path="/SignIn" element={<SignIn />}/>
         <Route path="/logIn" element={<LogIn />}/>
-        <Route path="/welcome" element={<Welcome />}/>
+        <Route path="/logout" element={<LogOut />}/>
       </Routes>
     </div>
   );

@@ -1,9 +1,23 @@
-import React, {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import React, {useEffect, useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { stateTypeRedux } from '../../store/store';
 import { saveProduct } from '../actions/ProductActions';
 import { addProductReducer } from '../slice/productSlice';
 
 const NewProduct = () => {
+
+  const {user} = useSelector((state:stateTypeRedux) => state.logged)
+
+  console.log(user);
+  
+  const navigate = useNavigate();
+
+  useEffect(()=> {
+    if(user=== null){
+      navigate('/logInGoogle')
+    }
+  }, [])
 
   const dispatch = useDispatch();
 
