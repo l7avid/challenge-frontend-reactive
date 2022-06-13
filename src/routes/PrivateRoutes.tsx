@@ -31,7 +31,8 @@ const PrivateRoutes: React.FunctionComponent<PrivateRoutesProps> = () => {
       <Link to="/purveyor">New Purveyor</Link>
       <Link to="/my_purveyors">My Purveyors</Link>
       <Link to="/products">Products</Link>
-      <Link to="/myproducts">My Products</Link>
+      {/* <Link to="/myproducts">My Products</Link> */}
+      <Link to="/">My Products</Link>
       <Link to="/receipt">new Receipt</Link>
       <Link to="/my_receipts">My Receipts</Link>
       <Link to="/bill">Bill</Link>
@@ -48,7 +49,8 @@ const PrivateRoutes: React.FunctionComponent<PrivateRoutesProps> = () => {
         <Route path="/purveyor" element={<NewPurveyor/>} />
         <Route path="/my_purveyors" element={<MyPurveyors />} />
         <Route path="/products" element={<NewProduct />} />
-        <Route path="/myproducts" element={<MyProducts />} />
+        {/* <Route path="/myproducts" element={<MyProducts />} /> */}
+        <Route path="/" element={<MyProducts />} />
         <Route path="/receipt" element={<NewReceipt />} />
         <Route path="/my_receipts" element={<MyReceipts />} />
         <Route path="/bill" element={<NewBill />} />

@@ -11,6 +11,9 @@ const BillList = () => {
 
     const bills = useSelector((state: stateTypeRedux) => state.bill.bills)
 
+    console.log("BIIIIIIILLS: ",bills.map(bill => bill.productsId));
+    
+
     const dispatch = useDispatch()
     
     useEffect(() => {

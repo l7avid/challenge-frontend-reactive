@@ -4,14 +4,14 @@ import * as React from 'react';
 type billType = {
     billId?: string,
     date: string,
-    clientName: string,
-    sellerName: string,
-    totalToPay: number,
+    client: string,
+    seller: string,
+    totalPaid: number,
     productsId: string[]
 }
 
 type newProductType = {
-    productName: string,
+    productId: string,
     units: number,
     price: number
 }
@@ -21,9 +21,9 @@ const initialState = {
         {
         billId: "",
         date: (new Date).toString(),
-        clientName: "",
-        sellerName: "",
-        totalToPay: 0,
+        client: "",
+        seller: "",
+        totalPaid: 0,
         productsId: ["",""]
         }
     ]

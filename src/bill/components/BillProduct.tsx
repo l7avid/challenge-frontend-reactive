@@ -20,28 +20,34 @@ const BillProduct: React.FunctionComponent<IBillProductProps> = ({product, addBi
 
         const productPrice = product.productPrice * Number(event.target.value)
           const billProduct: newProductType = {
-          productName: product.productName,
+          productId: `${product.productId}`,
           units: Number(event.target.value),
           price:productPrice
         }
 
         addBillProductToList((prev) => {
-          const found = prev.find(product => product.productName === billProduct.productName)
+          const found = prev.find(product => product.productId === billProduct.productId)
           if(found){
-            return prev.map(product => product.productName === billProduct.productName? billProduct:product)
+         
+            // const productToUpdate: productType = {
+            //   ...found,
+            //   availableUnits: found.units + billProduct.units
+            // }
+            
+            return prev.map(product => product.productId === billProduct.productId? billProduct:product)
+
           }
-          console.log([...prev, billProduct]);
           
           return [...prev, billProduct]
         })
 
-        console.log(billProduct);
+        // console.log(billProduct);
         
     }
 
   return (
     <div>
-        <input type="number" defaultValue='0' min='0' onChange={(event) => updateUnits(event)}/>
+        <input type="number" defaultValue='0' min='0' placeholder='Units' onChange={(event) => updateUnits(event)}/>
         <h5>Product: {product.productName}</h5>
         <h5>Stock: {product.availableUnits}</h5>
         <h5>Price: {product.productPrice}</h5>

@@ -19,23 +19,27 @@ const Bill: React.FunctionComponent<IBillProps> = ({bill}) => {
       dispatch(getAllProductsReducer(products))
     })
   }, [])
+
+  const products = useSelector((state: stateTypeRedux) => state.product.products)
+
+  const billProductId = bill.productsId.map(products => products + "/")
+
+  console.log(billProductId);
   
-  const productState = useSelector((state: stateTypeRedux) => state.product.products)
 
-  const productIds = [] as string[]
-
-  // productState.map(product => productIds.push(product.productId));
+  const productsName = products.map(product => bill.productsId.includes(`${product.productId}`) && (product.productName + "/"))
 
   return (
       <div>
         <h5 className='h5'>-------------------------------------------------------------------</h5>
         <h5>Id: {bill.billId}</h5>
         <h5>Date: {bill.date}</h5>
-        <h5>Client: {bill.clientName}</h5>
-        <h5>Seller: {bill.sellerName}</h5>
-        <h5>Products: {productIds.filter(productId => {
-          bill.productsId.includes(productId)
-        })}</h5>
+        <h5>Client: {bill.client}</h5>
+        <h5>Seller: {bill.seller}</h5>
+        <h5>ProductsId: {billProductId}</h5>
+        <h5>Products: {productsName}</h5>
+
+        {/* <h5>Products: {productIds.filter(productId => {bill.productsId.includes(productId)})}</h5> */}
       </div>
   )
 };

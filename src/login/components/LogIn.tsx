@@ -1,11 +1,12 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { stateTypeRedux } from "../../store/store";
 import { auth } from "../firebaseConfig";
 import GitHubLogin from "../GitHubLogin";
 import GoogleLogin from "../GoogleLogin";
+import { logInInReducer } from "../slice/loginSlice";
 
 
 
@@ -13,6 +14,8 @@ const LogIn: React.FunctionComponent = () => {
   
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const logInForm = (e : React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
@@ -29,6 +32,8 @@ const LogIn: React.FunctionComponent = () => {
         console.log(userCredential);
         console.log('**** user ***');
         console.log(user)
+        dispatch(logInInReducer(user))
+        navigate('/')
         
         /*Whit the information of the user you can populate an state that is mainly focused on 
         holding the information of the user that is logged in*/
