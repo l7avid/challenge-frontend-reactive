@@ -7,7 +7,6 @@ const HEADERS = {
 
 export const saveReceipt = async(receipt: receiptType) => {
     const response = await fetch(`https://backend-challenge-reactive.herokuapp.com/create/receipt`, {method: 'POST', body: JSON.stringify(receipt), headers: HEADERS})
-    console.log(response);
     const data = await response.json() as receiptType
     return data
 }

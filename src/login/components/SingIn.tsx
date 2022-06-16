@@ -29,7 +29,7 @@ const SignIn = () => {
           console.log(user);
           dispatch(logInInReducer(user));
 
-          navigate('/')
+          navigate('/logIn')
           /*Whit the information of the user you can populate an state that is mainly focused on 
           holding the information of the user that is logged in*/
           

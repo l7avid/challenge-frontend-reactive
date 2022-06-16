@@ -18,8 +18,6 @@ const store = configureStore({
 
 type stateTypeRedux = ReturnType<typeof store.getState>
 
-export const storeDispatch = () => useDispatch<typeof store.dispatch>()
-
 export default store
 
 export type { stateTypeRedux }

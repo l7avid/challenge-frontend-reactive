@@ -10,7 +10,7 @@ const LogOut: React.FunctionComponent = () => {
 
   const logOutButton = () => {
       dispatch(logOutInReducer())
-      navigate('/')
+      navigate('/logIn')
   }
 
   return (

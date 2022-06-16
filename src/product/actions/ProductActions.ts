@@ -24,6 +24,7 @@ export const deleteProduct = async(id: string) => {
 
 export const updateProduct = async(product: productType) => {
     const response = await fetch(`https://backend-challenge-reactive.herokuapp.com/update/product`, {method: 'PUT', body: JSON.stringify(product), headers: HEADERS})
+    console.log(response);
     const data = await response.json() as productType
     return data
 }

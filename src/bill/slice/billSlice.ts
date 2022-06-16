@@ -32,7 +32,7 @@ const initialState = {
 
 const billSlice = createSlice({
 
-    name: 'receipt',
+    name: 'bill',
     initialState,
     reducers: {
         addBillReducer(state, action){

@@ -24,7 +24,7 @@ const Bill: React.FunctionComponent<IBillProps> = ({bill}) => {
 
   const billProductId = bill.productsId.map(products => products + "/")
 
-  console.log(billProductId);
+  console.log(bill.billId as string);
   
 
   const productsName = products.map(product => bill.productsId.includes(`${product.productId}`) && (product.productName + "/"))

@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { updateProductReducer } from '../../product/slice/productSlice';
+import { updateProduct } from '../../product/actions/ProductActions';
+import { productType, updateProductReducer } from '../../product/slice/productSlice';
 import { stateTypeRedux } from '../../store/store';
 import { saveReceipt } from '../actions/receiptActions';
 import { addReceiptReducer } from '../slice/receiptSlice';
@@ -9,8 +10,6 @@ import { addReceiptReducer } from '../slice/receiptSlice';
 const NewReceipt = () => {
 
   const {user} = useSelector((state:stateTypeRedux) => state.logged)
-
-  console.log(user);
   
   const navigate = useNavigate();
 
@@ -33,8 +32,6 @@ const NewReceipt = () => {
       console.log("Enviando")
       const product = productState.filter(product => product.productId === productId)[0];
 
-      const newProduct = {...product, availableUnits: product.availableUnits + productUnits}
-
       const newReceipt = {
         purveyorId: product.purveyorId,
         productUnits: productUnits,
@@ -44,7 +41,18 @@ const NewReceipt = () => {
 
       const receipt = await saveReceipt(newReceipt);
 
-      // const productUpdated = await updateProduct(newProduct);
+      const productFound = productState.find(product => product.productId === productId)
+      if(productFound){
+        const productToUpdate: productType = {
+          ...productFound,
+          availableUnits: productFound.availableUnits + productUnits
+        }
+
+        console.log(productToUpdate);
+        
+        const response = await updateProduct(productToUpdate)
+        dispatch(updateProductReducer(response))
+      }
 
       dispatch(addReceiptReducer(receipt));
       // dispatch(updateProductReducer(productUpdated))

@@ -3,7 +3,6 @@ import { useSelector} from 'react-redux';
 import { saveProduct } from '../../product/actions/ProductActions';
 import ProductList from '../../product/components/ProductList';
 import { productType } from '../../product/slice/productSlice';
-import { stateTypeRedux, storeDispatch } from '../../store/store';
 import { newProductType } from '../slice/billSlice';
 
 
@@ -28,7 +27,13 @@ const BillProduct: React.FunctionComponent<IBillProductProps> = ({product, addBi
         addBillProductToList((prev) => {
           const found = prev.find(product => product.productId === billProduct.productId)
           if(found){
-         
+            
+            const matchingProuctId = prev.find(product => product.productId)
+
+            console.log("product found");
+            console.log(matchingProuctId);
+            
+            
             // const productToUpdate: productType = {
             //   ...found,
             //   availableUnits: found.units + billProduct.units
